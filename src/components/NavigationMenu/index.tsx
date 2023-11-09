@@ -106,7 +106,7 @@ const NavigationMenu = () => {
           </Box>
           <Stack sx={{ padding: '20px'}}>
             {selectedIcon !== null && (
-              <Typography variant="body1">{drawerIcons[selectedIcon].content}</Typography>
+              <>{drawerIcons[selectedIcon].content}</>
             )}
           </Stack>
         </Collapse>
