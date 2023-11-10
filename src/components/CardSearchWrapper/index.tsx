@@ -23,6 +23,10 @@ export async function getScryfallData( searchString: string): Promise<Card> {
 const CardSearchWrapper = () => {
   return (
     <div>
+
+
+
+      
               <SearchBar handleSearch={getScryfallData}/>
               
     </div>

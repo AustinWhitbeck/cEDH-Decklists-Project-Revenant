@@ -4,7 +4,6 @@ import SearchIcon from '@mui/icons-material/Search';
 import CancelTwoToneIcon from '@mui/icons-material/CancelTwoTone';
 import { useState } from "react"
 import { UseMutateFunction, useMutation } from "@tanstack/react-query";
-import { getScryfallData } from "../NavigationMenu/actions";
 import { Card } from "@/utils/Card";
 
 export type SearchBarProps = {

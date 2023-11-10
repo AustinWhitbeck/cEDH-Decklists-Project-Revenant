@@ -7,8 +7,10 @@ import SearchIcon from '@mui/icons-material/Search';
 import DownloadIcon from '@mui/icons-material/Download';
 import SearchBar from "../SearchBar";
 import CloseIcon from '@mui/icons-material/Close';
-import { getScryfallData } from "./actions";
 import { useMutation } from "@tanstack/react-query";
+import CardNameAutoComplete from "../CardSearch";
+import { getPartialCardNames } from "../CardSearch/actions";
+import CardSearch from "../CardSearch";
 
 
 
@@ -27,7 +29,7 @@ const NavigationMenu = () => {
 
   const { mutate: fuzzyCardSearch, data: cardSearchData, isPending, isError } = useMutation({
     mutationFn: async (searchValue: string) => {
-      return getScryfallData(searchValue);
+      return getPartialCardNames(searchValue);
     },
     onSuccess: (data) => {
       console.log('data', data);
@@ -39,36 +41,9 @@ const NavigationMenu = () => {
 
   console.log('cardSearchData', cardSearchData);
 
-  const SearchContent = () => {
-
-    const renderResult = () => {
-      if (isPending) {
-        return <Typography>Loading...</Typography>
-      }
-      if (isError) {
-        return <Typography>We did not find a card with that search</Typography>
-      }
-      if (cardSearchData) {
-        return (
-          <>
-            <Typography>Found card {cardSearchData?.name} </Typography>
-            <Image src={cardSearchData?.image_uris?.normal} alt="Card Image" width={240} height={300} style={{ borderRadius: '10px'}} />
-          </>
-        )
-      }
-      return <Typography>Search for a card!</Typography>
-    }
-    return(
-      <Stack>
-        <SearchBar handleSearch={fuzzyCardSearch}/>
-        {renderResult()}
-      </Stack>
-    )
-  }
-
 
   const drawerIcons = [
-    { text: 'Search', icon: <SearchIcon sx={{ color: 'secondary.main' }} />, content: <SearchContent /> },
+    { text: 'Search', icon: <SearchIcon sx={{ color: 'secondary.main' }} />, content: <CardSearch /> },
     { text: 'Download', icon: <DownloadIcon sx={{ color: 'secondary.main' }} />, content: 'Download your list' },
   ];
   return (
