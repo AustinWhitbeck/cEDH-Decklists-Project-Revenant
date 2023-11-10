@@ -25,7 +25,6 @@ export default function RootLayout({
           <ReactQueryProvider>
           <ThemeRegistry>
           <Box sx={{ display: 'flex', height: '100vh',  [`@media screen and (max-width: 650px)`]: {
-                // height: '100%', 
                 backgroundColor: 'red', 
                 display: 'flex', 
             }, }}>
